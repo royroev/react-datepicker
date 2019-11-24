@@ -91,55 +91,49 @@ export default class Day extends React.Component {
       endDate
     } = this.props;
 
-    if (!(selectsStart || selectsEnd) || !selectingDate || this.isDisabled()) {
+    if (
+      !(selectsStart || selectsEnd) ||
+      !selectingDate ||
+      this.isDisabled() ||
+      endDate
+    ) {
       return false;
     }
 
-    if (
-      selectsStart &&
-      endDate &&
-      (isBefore(selectingDate, endDate) || isEqual(selectingDate, endDate))
-    ) {
-      return isDayInRange(day, selectingDate, endDate);
-    }
+    return (
+      isDayInRange(day, startDate, selectingDate) ||
+      isDayInRange(day, selectingDate, startDate)
+    );
 
-    if (
-      selectsEnd &&
-      startDate &&
-      (isAfter(selectingDate, startDate) || isEqual(selectingDate, startDate))
-    ) {
-      return isDayInRange(day, startDate, selectingDate);
-    }
-
-    return false;
+    // return false;
   };
 
   isSelectingRangeStart = () => {
-    if (!this.isInSelectingRange()) {
+    // if (!this.isInSelectingRange()) {
+    //   return false;
+    // }
+
+    const { day, selectingDate, startDate, endDate } = this.props;
+
+    if (endDate) {
       return false;
     }
 
-    const { day, selectingDate, startDate, selectsStart } = this.props;
-
-    if (selectsStart) {
-      return isSameDay(day, selectingDate);
-    } else {
-      return isSameDay(day, startDate);
-    }
+    return isSameDay(day, selectingDate) && isBefore(selectingDate, startDate);
   };
 
   isSelectingRangeEnd = () => {
-    if (!this.isInSelectingRange()) {
+    // if (!this.isInSelectingRange()) {
+    //   return false;
+    // }
+
+    const { day, selectingDate, startDate, endDate } = this.props;
+
+    if (endDate) {
       return false;
     }
 
-    const { day, selectingDate, endDate, selectsEnd } = this.props;
-
-    if (selectsEnd) {
-      return isSameDay(day, selectingDate);
-    } else {
-      return isSameDay(day, endDate);
-    }
+    return isSameDay(day, selectingDate) && isAfter(selectingDate, startDate);
   };
 
   isRangeStart = () => {

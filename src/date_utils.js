@@ -187,7 +187,8 @@ export {
   getYear,
   getDay,
   getDate,
-  getTime
+  getTime,
+  differenceInCalendarDays
 };
 
 export function getWeek(date) {
