@@ -17,6 +17,7 @@
         "setMinutes": false,
         "getDate": false,
         "addDays": false,
+        "differenceInCalendarDays": false,
         "subDays": false,
         "addMonths": false,
         "fi": false,
