@@ -68,7 +68,7 @@ import RangeQuarterPicker from "../../examples/rangeQuarterPicker";
 import OnCalendarChangeStateCallbacks from "../../examples/onCalendarOpenStateCallbacks";
 
 import "./style.scss";
-import "react-datepicker/dist/react-datepicker.css";
+import "@front-core/react-datepicker/dist/react-datepicker.css";
 
 export default class exampleComponents extends React.Component {
   componentDidMount() {

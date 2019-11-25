@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ExampleComponents from "../Examples";
 import ribbon from "./ribbon.png";
 import logo from "./logo.png";
-import DatePicker from "react-datepicker";
+import DatePicker from "@front-core/react-datepicker";
 
 const Example = () => {
   const [isOpen, setIsOpen] = useState(true);
